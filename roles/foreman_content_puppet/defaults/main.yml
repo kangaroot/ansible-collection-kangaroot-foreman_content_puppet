@@ -1,0 +1,154 @@
+---
+# noqa: var-naming[no-role-prefix]
+# defaults file for foreman_content_puppet
+
+#######################################
+### URLS
+#######################################
+
+foreman_repo_baseurl_puppet: http://yum.puppetlabs.com
+
+foreman_repo_baseurl_puppet7: "{{ foreman_repo_baseurl_puppet }}"
+foreman_repo_baseurl_puppet7_el7: "{{ foreman_repo_baseurl_puppet7 }}"
+foreman_repo_baseurl_puppet7_el8: "{{ foreman_repo_baseurl_puppet7 }}"
+foreman_repo_baseurl_puppet7_el9: "{{ foreman_repo_baseurl_puppet7 }}"
+
+foreman_repo_baseurl_puppet8: "{{ foreman_repo_baseurl_puppet }}"
+foreman_repo_baseurl_puppet8_el7: "{{ foreman_repo_baseurl_puppet8 }}"
+foreman_repo_baseurl_puppet8_el8: "{{ foreman_repo_baseurl_puppet8 }}"
+foreman_repo_baseurl_puppet8_el9: "{{ foreman_repo_baseurl_puppet8 }}"
+
+
+#######################################
+### ENABLE VARS
+#######################################
+
+foreman_enable_puppet: false
+
+foreman_enable_puppet7: "{{ foreman_enable_puppet | bool }}"
+foreman_enable_puppet7_el7: false
+foreman_enable_puppet7_el8: "{{ foreman_enable_puppet7 | bool }}"
+foreman_enable_puppet7_el9: "{{ foreman_enable_puppet7 | bool }}"
+
+foreman_enable_puppet8: false
+foreman_enable_puppet8_el7: false
+foreman_enable_puppet8_el8: "{{ foreman_enable_puppet8 | bool }}"
+foreman_enable_puppet8_el9: "{{ foreman_enable_puppet8 | bool }}"
+
+
+#######################################
+### PRODUCT DEFAULTS
+#######################################
+
+### PUPPET
+
+foreman_products_defaults_download_policy_puppet: "{{ foreman_products_defaults_download_policy }}"
+foreman_products_defaults_mirroring_policy_puppet: mirror_content_only
+foreman_products_defaults_verify_ssl_on_sync_puppet: "{{ foreman_products_defaults_verify_ssl_on_sync | bool }}"
+foreman_products_defaults_http_proxy_policy_puppet: "{{ foreman_products_defaults_http_proxy_policy }}"
+foreman_products_defaults_unprotected_puppet: "{{ foreman_products_defaults_unprotected | bool }}"
+
+foreman_products_defaults_download_policy_puppet7: "{{ foreman_products_defaults_download_policy_puppet }}"
+foreman_products_defaults_mirroring_policy_puppet7: "{{ foreman_products_defaults_mirroring_policy_puppet }}"
+foreman_products_defaults_verify_ssl_on_sync_puppet7: "{{ foreman_products_defaults_verify_ssl_on_sync_puppet | bool }}"
+foreman_products_defaults_http_proxy_policy_puppet7: "{{ foreman_products_defaults_http_proxy_policy_puppet }}"
+foreman_products_defaults_unprotected_puppet7: "{{ foreman_products_defaults_unprotected_puppet | bool }}"
+
+foreman_products_defaults_download_policy_puppet8: "{{ foreman_products_defaults_download_policy_puppet }}"
+foreman_products_defaults_mirroring_policy_puppet8: "{{ foreman_products_defaults_mirroring_policy_puppet }}"
+foreman_products_defaults_verify_ssl_on_sync_puppet8: "{{ foreman_products_defaults_verify_ssl_on_sync_puppet | bool }}"
+foreman_products_defaults_http_proxy_policy_puppet8: "{{ foreman_products_defaults_http_proxy_policy_puppet }}"
+foreman_products_defaults_unprotected_puppet8: "{{ foreman_products_defaults_unprotected_puppet | bool }}"
+
+
+#######################################
+### ORGANIZATION VARS
+#######################################
+
+foreman_organization_puppet: "{{ foreman_organization }}"
+
+foreman_organization_puppet7: "{{ foreman_organization_puppet }}"
+foreman_organization_puppet7_el7: "{{ foreman_organization_puppet7 }}"
+foreman_organization_puppet7_el8: "{{ foreman_organization_puppet7 }}"
+foreman_organization_puppet7_el9: "{{ foreman_organization_puppet7 }}"
+
+foreman_organization_puppet8: "{{ foreman_organization_puppet }}"
+foreman_organization_puppet8_el7: "{{ foreman_organization_puppet8 }}"
+foreman_organization_puppet8_el8: "{{ foreman_organization_puppet8 }}"
+foreman_organization_puppet8_el9: "{{ foreman_organization_puppet8 }}"
+
+
+#######################################
+### CONTENT VIEW DEFAULTS
+#######################################
+
+foreman_cv_allow_promote_puppet: "{{ foreman_cv_allow_promote | bool }}"
+
+foreman_cv_allow_promote_puppet7: "{{ foreman_cv_allow_promote_puppet | bool }}"
+foreman_cv_allow_promote_puppet7_el7: "{{ foreman_cv_allow_promote_puppet7 | bool }}"
+foreman_cv_allow_promote_puppet7_el8: "{{ foreman_cv_allow_promote_puppet7 | bool }}"
+foreman_cv_allow_promote_puppet7_el9: "{{ foreman_cv_allow_promote_puppet7 | bool }}"
+
+foreman_cv_allow_promote_puppet8: "{{ foreman_cv_allow_promote_puppet | bool }}"
+foreman_cv_allow_promote_puppet8_el7: "{{ foreman_cv_allow_promote_puppet8 | bool }}"
+foreman_cv_allow_promote_puppet8_el8: "{{ foreman_cv_allow_promote_puppet8 | bool }}"
+foreman_cv_allow_promote_puppet8_el9: "{{ foreman_cv_allow_promote_puppet8 | bool }}"
+
+
+#######################################
+### CONTENT
+#######################################
+
+foreman_content_credentials_puppet_main:
+  - name: "{{ foreman_cred_name_prefix | default('') }}RPM-GPG-KEY-puppet"
+    content_type: gpg_key
+    content: "{{ lookup('ansible.builtin.url', foreman_repo_baseurl_puppet ~ '/RPM-GPG-KEY-puppet', split_lines=False, validate_certs=False) }}"
+    # content: "{{ lookup('ansible.builtin.file', role_path ~ '/files/RPM-GPG-KEY-puppet') }}"
+  - name: "{{ foreman_cred_name_prefix | default('') }}RPM-GPG-KEY-puppet-20250406"
+    content_type: gpg_key
+    content: "{{ lookup('ansible.builtin.url', foreman_repo_baseurl_puppet ~ '/RPM-GPG-KEY-puppet-20250406', split_lines=False, validate_certs=False) }}"
+    # content: "{{ lookup('ansible.builtin.file', role_path ~ '/files/RPM-GPG-KEY-puppet-20250406') }}"
+
+foreman_content_credentials_puppet: "{{ ( foreman_content_credentials_puppet_main | default([]) if foreman_enable_puppet | bool else [] ) |
+  union( foreman_content_credentials_puppet7 | default([]) if foreman_enable_puppet7 | bool else [] ) |
+  union( foreman_content_credentials_puppet8 | default([]) if foreman_enable_puppet8 | bool else [] )
+  }}"
+
+foreman_products_puppet_main: []
+foreman_products_puppet: "{{ ( foreman_products_puppet_main | default([]) if foreman_enable_puppet | bool else [] ) |
+  union( foreman_products_puppet7 | default([]) if foreman_enable_puppet7 | bool else [] ) |
+  union( foreman_products_puppet8 | default([]) if foreman_enable_puppet8 | bool else [] )
+  }}"
+
+foreman_content_views_puppet_main: []
+foreman_content_views_puppet: "{{ ( foreman_content_views_puppet_main | default([]) if foreman_enable_puppet | bool else [] ) |
+  union( foreman_content_views_puppet7 | default([]) if foreman_enable_puppet7 | bool else [] ) |
+  union( foreman_content_views_puppet8 | default([]) if foreman_enable_puppet8 | bool else [] )
+  }}"
+
+foreman_operatingsystems_puppet_main: []
+foreman_operatingsystems_puppet: "{{ ( foreman_operatingsystems_puppet_main | default([]) if foreman_enable_puppet | bool else [] ) |
+  union( foreman_operatingsystems_puppet7 | default([]) if foreman_enable_puppet7 | bool else [] ) |
+  union( foreman_operatingsystems_puppet8 | default([]) if foreman_enable_puppet8 | bool else [] )
+  }}"
+
+foreman_installation_media_puppet_main: []
+foreman_installation_media_puppet: "{{ ( foreman_installation_media_puppet_main | default([]) if foreman_enable_puppet | bool else [] ) |
+  union( foreman_installation_media_puppet7 | default([]) if foreman_enable_puppet7 | bool else [] ) |
+  union( foreman_installation_media_puppet8 | default([]) if foreman_enable_puppet8 | bool else [] )
+  }}"
+
+foreman_activation_keys_puppet_main: []
+foreman_activation_keys_puppet: "{{ ( foreman_activation_keys_puppet_main | default([]) if foreman_enable_puppet | bool and foreman_enable_puppet_default_ak | bool else [] ) |
+  union( foreman_activation_keys_puppet7 | default([]) if foreman_enable_puppet7 | bool else [] ) |
+  union( foreman_activation_keys_puppet8 | default([]) if foreman_enable_puppet8 | bool else [] )
+  }}"
+
+foreman_sync_plan_products_puppet_main:
+  - "{{ foreman_product_name_prefix | default('') }}Puppet"
+
+foreman_sync_plan_products_puppet: "{{ ( foreman_sync_plan_products_puppet_main | default([]) if foreman_enable_puppet | bool else [] ) |
+  union( foreman_sync_plan_products_puppet7 | default([]) if foreman_enable_puppet7 | bool else [] ) |
+  union( foreman_sync_plan_products_puppet8 | default([]) if foreman_enable_puppet8 | bool else [] )
+  }}"
+

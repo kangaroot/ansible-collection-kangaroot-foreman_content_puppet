@@ -1,0 +1,31 @@
+---
+
+#######################################
+### PRODUCT DEFAULTS
+#######################################
+
+# foreman_products_defaults_download_policy: on_demand
+# foreman_products_defaults_mirroring_policy: mirror_complete
+# foreman_products_defaults_verify_ssl_on_sync: false
+# foreman_products_defaults_http_proxy_policy: global_default_http_proxy
+# foreman_products_defaults_unprotected: false
+
+### PUPPET
+
+# foreman_products_defaults_download_policy_puppet: "{{ foreman_products_defaults_download_policy }}"
+# foreman_products_defaults_mirroring_policy_puppet: mirror_content_only
+# foreman_products_defaults_verify_ssl_on_sync_puppet: "{{ foreman_products_defaults_verify_ssl_on_sync | bool }}"
+# foreman_products_defaults_http_proxy_policy_puppet: "{{ foreman_products_defaults_http_proxy_policy }}"
+# foreman_products_defaults_unprotected_puppet: "{{ foreman_products_defaults_unprotected | bool }}"
+
+# foreman_products_defaults_download_policy_puppet7: "{{ foreman_products_defaults_download_policy_puppet }}"
+# foreman_products_defaults_mirroring_policy_puppet7: "{{ foreman_products_defaults_mirroring_policy_puppet }}"
+# foreman_products_defaults_verify_ssl_on_sync_puppet7: "{{ foreman_products_defaults_verify_ssl_on_sync_puppet | bool }}"
+# foreman_products_defaults_http_proxy_policy_puppet7: "{{ foreman_products_defaults_http_proxy_policy_puppet }}"
+# foreman_products_defaults_unprotected_puppet7: "{{ foreman_products_defaults_unprotected_puppet | bool }}"
+
+# foreman_products_defaults_download_policy_puppet8: "{{ foreman_products_defaults_download_policy_puppet }}"
+# foreman_products_defaults_mirroring_policy_puppet8: "{{ foreman_products_defaults_mirroring_policy_puppet }}"
+# foreman_products_defaults_verify_ssl_on_sync_puppet8: "{{ foreman_products_defaults_verify_ssl_on_sync_puppet | bool }}"
+# foreman_products_defaults_http_proxy_policy_puppet8: "{{ foreman_products_defaults_http_proxy_policy_puppet }}"
+# foreman_products_defaults_unprotected_puppet8: "{{ foreman_products_defaults_unprotected_puppet | bool }}"

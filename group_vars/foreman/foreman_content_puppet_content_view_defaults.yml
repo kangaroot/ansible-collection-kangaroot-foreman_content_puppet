@@ -1,0 +1,23 @@
+---
+
+#######################################
+### CONTENT VIEW DEFAULTS
+#######################################
+
+# foreman_cv_allow_promote: false
+# foreman_ccv_allow_promote: true
+# foreman_ccv_auto_publish: true
+
+### PUPPET
+
+# foreman_cv_allow_promote_puppet: "{{ foreman_cv_allow_promote | bool }}"
+
+# foreman_cv_allow_promote_puppet7: "{{ foreman_cv_allow_promote_puppet | bool }}"
+# foreman_cv_allow_promote_puppet7_el7: "{{ foreman_cv_allow_promote_puppet7 | bool }}"
+# foreman_cv_allow_promote_puppet7_el8: "{{ foreman_cv_allow_promote_puppet7 | bool }}"
+# foreman_cv_allow_promote_puppet7_el9: "{{ foreman_cv_allow_promote_puppet7 | bool }}"
+
+# foreman_cv_allow_promote_puppet8: "{{ foreman_cv_allow_promote_puppet | bool }}"
+# foreman_cv_allow_promote_puppet8_el7: "{{ foreman_cv_allow_promote_puppet8 | bool }}"
+# foreman_cv_allow_promote_puppet8_el8: "{{ foreman_cv_allow_promote_puppet8 | bool }}"
+# foreman_cv_allow_promote_puppet8_el9: "{{ foreman_cv_allow_promote_puppet8 | bool }}"

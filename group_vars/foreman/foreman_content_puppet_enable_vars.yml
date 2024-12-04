@@ -1,0 +1,19 @@
+---
+
+#######################################
+### ENABLE VARS
+#######################################
+
+### PUPPET
+
+# foreman_enable_puppet: false
+
+# foreman_enable_puppet7: "{{ foreman_enable_puppet | bool }}"
+# foreman_enable_puppet7_el7: false
+# foreman_enable_puppet7_el8: "{{ foreman_enable_puppet7 | bool }}"
+# foreman_enable_puppet7_el9: "{{ foreman_enable_puppet7 | bool }}"
+
+# foreman_enable_puppet8: false
+# foreman_enable_puppet8_el7: false
+# foreman_enable_puppet8_el8: "{{ foreman_enable_puppet8 | bool }}"
+# foreman_enable_puppet8_el9: "{{ foreman_enable_puppet8 | bool }}"

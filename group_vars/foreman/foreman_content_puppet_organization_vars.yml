@@ -1,0 +1,19 @@
+---
+
+#######################################
+### ORGANIZATION VARS
+#######################################
+
+### PUPPET
+
+# foreman_organization_puppet: "{{ foreman_organization }}"
+
+# foreman_organization_puppet7: "{{ foreman_organization_puppet }}"
+# foreman_organization_puppet7_el7: "{{ foreman_organization_puppet7 }}"
+# foreman_organization_puppet7_el8: "{{ foreman_organization_puppet7 }}"
+# foreman_organization_puppet7_el9: "{{ foreman_organization_puppet7 }}"
+
+# foreman_organization_puppet8: "{{ foreman_organization_puppet }}"
+# foreman_organization_puppet8_el7: "{{ foreman_organization_puppet8 }}"
+# foreman_organization_puppet8_el8: "{{ foreman_organization_puppet8 }}"
+# foreman_organization_puppet8_el9: "{{ foreman_organization_puppet8 }}"
